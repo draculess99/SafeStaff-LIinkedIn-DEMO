@@ -6,7 +6,7 @@ SafeStaff AI is an agentic AI capstone prototype for emergency-room operations. 
 
 ## Project Links
 
-- **Live Demo:** https://safestaff-liinkedin-demo-production-2c99.up.railway.app/
+- **Live Demo:** https://safestaff-liinkedin-demo-production.up.railway.app/
 - **GitHub Repository:** https://github.com/draculess99/SafeStaff-LIinkedIn-DEMO
 - **LinkedIn:** https://www.linkedin.com/in/gammaconsult/
 - **Portfolio:** https://draculess99.github.io/VET-VTO-Forecasting/
