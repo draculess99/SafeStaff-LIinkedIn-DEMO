@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeStaff AI | William Low</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px 30px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 800px;
+      margin: 10px auto;
+    }
+
+    .buttons {
+      margin-top: 25px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 8px;
+      padding: 12px 20px;
+      background: #2563eb;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .buttons a:hover {
+      background: #1d4ed8;
+      text-decoration: none;
+    }
+
+    .card {
+      background: #1e293b;
+      border-radius: 14px;
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      color: #93c5fd;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .linkedin-box {
+      background: #0b1220;
+      border-left: 5px solid #38bdf8;
+      padding: 18px;
+      border-radius: 10px;
+    }
+
+    .diagram {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .box {
+      background: #0b1220;
+      border: 2px solid #334155;
+      border-radius: 12px;
+      padding: 18px;
+      width: 180px;
+      min-height: 110px;
+      text-align: center;
+      font-weight: bold;
+      color: #e2e8f0;
+    }
+
+    .arrow {
+      font-size: 2rem;
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px 50px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .diagram {
+        flex-direction: column;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <section class="hero">
+      <h1>SafeStaff AI</h1>
+      <p>
+        An agentic AI decision-support project for emergency department wait-time forecasting
+        and nurse staffing recommendations.
+      </p>
+      <p>
+        Created by <strong>William Low</strong> — combining healthcare operations thinking,
+        machine learning, and human-in-the-loop decision support.
+      </p>
+
+      <div class="buttons">
+        <a href="https://github.com/draculess99/SafeStaff-LIinkedIn-DEMO" target="_blank">GitHub Repo</a>
+        <a href="YOUR_LINKEDIN_URL_HERE" target="_blank">LinkedIn</a>
+        <a href="YOUR_LIVE_DEMO_URL_HERE" target="_blank">Live Demo</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>LinkedIn Profile Summary</h2>
+      <div class="linkedin-box">
+        <p><strong>William Low</strong></p>
+        <p>
+          AI / Machine Learning / Data Analytics / Operations Decision Support
+        </p>
+        <p>
+          Builder of practical AI solutions focused on real operational problems.
+          SafeStaff AI is a healthcare capstone project designed to support safer
+          staffing decisions in emergency departments by linking wait-time risk
+          prediction with nurse staffing recommendations.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What SafeStaff AI Is About</h2>
+      <p>
+        SafeStaff AI addresses two connected healthcare operations problems:
+      </p>
+      <ul>
+        <li><strong>Emergency department wait-time forecasting</strong></li>
+        <li><strong>Nurse staffing decision support</strong></li>
+      </ul>
+      <p>
+        Instead of treating these as separate issues, SafeStaff AI connects them.
+        When operational pressure rises and wait-time risk increases, the system
+        helps recommend whether staffing levels may need adjustment.
+      </p>
+      <p>
+        The project uses machine learning and agentic AI ideas to help support
+        decision-making while keeping a human approval step in the loop.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Key Features</h2>
+      <ul>
+        <li>Predicts emergency department wait-time risk</li>
+        <li>Recommends nurse staffing actions when risk increases</li>
+        <li>Uses a human approval workflow before actions are accepted</li>
+        <li>Maintains audit logging for transparency and accountability</li>
+        <li>Built as an AI control tower / decision-support demo</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>How SafeStaff AI Works</h2>
+      <p>
+        The system takes in healthcare operational inputs, runs prediction logic,
+        and then passes recommendations through a human review step before final output.
+      </p>
+
+      <div class="diagram">
+        <div class="box">1. Input Data<br><small>ED demand, staffing, wait-time factors</small></div>
+        <div class="arrow">→</div>
+        <div class="box">2. ML Prediction Engine<br><small>Forecasts wait-time risk</small></div>
+        <div class="arrow">→</div>
+        <div class="box">3. Agentic AI Decision Layer<br><small>Generates staffing recommendations</small></div>
+        <div class="arrow">→</div>
+        <div class="box">4. Human Approval<br><small>Decision reviewed before use</small></div>
+        <div class="arrow">→</div>
+        <div class="box">5. Audit Logging & Output<br><small>Recommendation recorded and displayed</small></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Technology Stack</h2>
+      <ul>
+        <li>Python</li>
+        <li>Streamlit</li>
+        <li>Flask / backend services</li>
+        <li>XGBoost / ML forecasting</li>
+        <li>Agentic AI workflow concepts</li>
+        <li>Human-in-the-loop approval and audit trail design</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Why This Project Matters</h2>
+      <p>
+        Emergency departments often face patient flow pressure, long waits,
+        and staffing strain. SafeStaff AI is a practical demonstration of how
+        machine learning and agentic AI can support healthcare operations by
+        improving visibility into wait-time risk and helping staff plan ahead.
+      </p>
+    </section>
+
+    <div class="footer">
+      <p>© 2026 William Low | SafeStaff AI</p>
+    </div>
+  </div>
+
+</body>
+</html>
