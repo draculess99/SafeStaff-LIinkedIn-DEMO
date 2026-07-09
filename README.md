@@ -42,7 +42,7 @@ XGBoost wait-time forecast
     ↓
 Operational pressure engine
     ↓
-Operational memory / similar-event retrieval
+RAG Operational Memory / Similar-Event Retrieval
     ↓
 Pressure-based staffing adjustment
     ↓
@@ -190,7 +190,7 @@ This tab provides visual proof of the underlying Machine Learning model's accura
 flowchart TD
     A[ER Scenario Inputs] --> B[XGBoost Wait-Time Forecast]
     A --> C[Operational Pressure Engine]
-    A --> M[Operational Memory / Similar-Event Retrieval]
+    A --> M[RAG Operational Memory / Similar-Event Retrieval]
 
     C --> C1[Arrival Surge]
     C --> C2[Bed Boarding]
@@ -270,7 +270,7 @@ flowchart TD
     S --> D4
     S --> D5
 
-    R[Stored Prior ER States / Audit History] --> M[Operational Memory / Similar-Event Retrieval]
+    R[Stored Prior ER States / Audit History] --> M[RAG Operational Memory / Similar-Event Retrieval]
     S --> M
 
     P --> E[Pressure-Based Staffing Adjustment]
