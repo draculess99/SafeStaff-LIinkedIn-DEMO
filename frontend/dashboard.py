@@ -1162,8 +1162,8 @@ live_records_count = 0
 live_csv = "database/live_collected_data.csv"
 if os.path.exists(live_csv):
     try:
-        live_df = pd.read_csv(live_csv)
-        live_records_count = len(live_df)
+        with open(live_csv, 'r') as f:
+            live_records_count = max(0, sum(1 for _ in f) - 1)
     except Exception:
         pass
 

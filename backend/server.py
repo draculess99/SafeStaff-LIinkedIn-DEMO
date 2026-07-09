@@ -923,6 +923,8 @@ def find_similar_history():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
 
+_EVALUATION_CACHE = {}
+
 @app.route("/api/model-evaluation", methods=["GET"])
 def model_evaluation():
     """Return feature importances, actual vs predicted, and residual data for dashboard graphs."""
@@ -935,6 +937,10 @@ def model_evaluation():
 
         if not os.path.exists(MODEL_PATH):
             return jsonify({"success": False, "error": "Model not trained yet."}), 400
+
+        mtime = os.path.getmtime(MODEL_PATH)
+        if MODEL_PATH in _EVALUATION_CACHE and _EVALUATION_CACHE[MODEL_PATH]["mtime"] == mtime:
+            return jsonify(_EVALUATION_CACHE[MODEL_PATH]["data"])
 
         payload = load_model_payload(MODEL_PATH)
 
@@ -1048,7 +1054,7 @@ def model_evaluation():
         actual_sample = y_test.values[indices].tolist()
         pred_sample = y_pred[indices].tolist()
 
-        return jsonify({
+        result_data = {
             "success": True,
             "feature_importances": feature_imp,
             "feature_mapping_success": mapping_success,
@@ -1060,7 +1066,10 @@ def model_evaluation():
             "risk_band_confusion": confusion,
             "sample_size": sample_size,
             "total_test_size": len(y_test)
-        })
+        }
+        
+        _EVALUATION_CACHE[MODEL_PATH] = {"mtime": mtime, "data": result_data}
+        return jsonify(result_data)
     except Exception as e:
         import traceback
         traceback.print_exc()

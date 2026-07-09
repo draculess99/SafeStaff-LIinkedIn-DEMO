@@ -1,14 +1,31 @@
 import os
 import pandas as pd
+import functools
 
 def _get_db_path(filename):
     return os.path.join(os.path.dirname(os.path.dirname(__file__)), "database", filename)
+
+@functools.lru_cache(maxsize=1)
+def _get_esi_df():
+    return pd.read_csv(_get_db_path("esi_seasonal_patterns.csv"))
+
+@functools.lru_cache(maxsize=1)
+def _get_boarding_df():
+    return pd.read_csv(_get_db_path("bed_boarding_pressure.csv"))
+
+@functools.lru_cache(maxsize=1)
+def _get_arrival_df():
+    return pd.read_csv(_get_db_path("arrival_surge_pressure.csv"))
+
+@functools.lru_cache(maxsize=1)
+def _get_fast_track_df():
+    return pd.read_csv(_get_db_path("fast_track_flow.csv"))
 
 def get_seasonal_esi_pressure(month, preset_data=None):
     source_type = "CSV lookup"
     timeline_match_level = "Month Match"
     try:
-        df = pd.read_csv(_get_db_path("esi_seasonal_patterns.csv"))
+        df = _get_esi_df()
         row = df[df["month"] == month].iloc[0]
         pressure = row["seasonal_acuity_pressure"]
         note = row["data_source_note"]
@@ -49,7 +66,7 @@ def get_bed_boarding_pressure(month, day_of_week, hour, preset_data=None):
     source_type = "CSV lookup"
     timeline_match_level = "Hour Match"
     try:
-        df = pd.read_csv(_get_db_path("bed_boarding_pressure.csv"))
+        df = _get_boarding_df()
         subset = df[(df["hour"] == hour)]
         if subset.empty:
             row = df.iloc[0]
@@ -96,7 +113,7 @@ def get_arrival_surge_pressure(month, day_of_week, hour, preset_data=None):
     source_type = "CSV lookup"
     timeline_match_level = "Hour Match"
     try:
-        df = pd.read_csv(_get_db_path("arrival_surge_pressure.csv"))
+        df = _get_arrival_df()
         subset = df[(df["hour"] == hour)]
         row = subset.iloc[0] if not subset.empty else df.iloc[0]
         pressure = row["waiting_room_pressure_level"]
@@ -139,7 +156,7 @@ def get_fast_track_flow_pressure(month, day_of_week, hour, preset_data=None):
     source_type = "CSV lookup"
     timeline_match_level = "Hour Match"
     try:
-        df = pd.read_csv(_get_db_path("fast_track_flow.csv"))
+        df = _get_fast_track_df()
         subset = df[(df["hour"] == hour)]
         row = subset.iloc[0] if not subset.empty else df.iloc[0]
         pressure = row["low_acuity_bottleneck_level"]
