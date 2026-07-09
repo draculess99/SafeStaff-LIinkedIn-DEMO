@@ -443,6 +443,8 @@ SafeStaff_AI/
 
 ## Local installation
 
+### Using standard venv & pip
+
 ```bash
 git clone <your-repo-url>
 cd SafeStaff_AI
@@ -467,6 +469,19 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+### Using Rye
+
+Alternatively, you can initialize and manage the environment using [Rye](https://rye.astral.sh/):
+
+```bash
+git clone <your-repo-url>
+cd SafeStaff_AI
+rye init
+rye pin 3.11
+rye add -r requirements.txt
+rye sync
 ```
 
 ---
