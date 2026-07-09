@@ -358,6 +358,36 @@
       margin-top: 18px;
     }
 
+
+
+    .architecture-card {
+      overflow: hidden;
+    }
+
+    .architecture-media {
+      margin-top: 22px;
+      padding: 14px;
+      border-radius: 24px;
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      background: rgba(2, 6, 23, 0.42);
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
+    }
+
+    .architecture-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .architecture-caption {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      text-align: center;
+    }
+
     .footer {
       text-align: center;
       padding: 34px 20px 6px;
@@ -406,6 +436,7 @@
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
         <a href="#workflow">Workflow</a>
         <a href="#stack">Tech Stack</a>
       </div>
@@ -462,6 +493,28 @@
         </p>
       </div>
     </section>
+
+    <section id="architecture" class="card architecture-card">
+      <h2>Architecture &amp; Data Flow</h2>
+      <p>
+        SafeStaff AI connects operational ER inputs, nurse registry data, shift schedules,
+        policy/SOP grounding, wait-time forecasting, multi-agent review, human approval,
+        roster action, and audit logging into one decision-support control tower.
+      </p>
+      <div class="architecture-media">
+        <img
+          src="assets/ai_driven_staffing_decision_diagram.png"
+          alt="SafeStaff AI architecture and data flow diagram showing inputs, Streamlit frontend, Flask backend decision engine, XGBoost forecast, RAG retrieval, multi-agent committee, human approval, roster update, audit log, and feedback loop"
+          loading="lazy"
+        />
+      </div>
+      <p class="architecture-caption">
+        Architecture view: ER scenario inputs flow through the Streamlit control tower,
+        backend forecast and agentic decision engine, then into human-governed staffing actions
+        with audit-log feedback.
+      </p>
+    </section>
+
 
     <section id="features" class="card">
       <h2>Key Features</h2>
