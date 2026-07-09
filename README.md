@@ -352,11 +352,11 @@ Final recommendation: +K
 
 This makes the recommendation easier to defend because users can see whether the nurse count came from the model, the operational rules, or both.
 
-### Operational memory and similar-event retrieval
+### RAG-Based Operational Memory and Similar-Event Retrieval
 
-SafeStaff AI includes a lightweight operational memory layer that stores prior ER inflow states, staffing decisions, and similar historical events. When a new ER scenario is processed, the system can compare the current state against previous operational patterns to provide additional context for the staffing recommendation.
+SafeStaff AI includes a lightweight operational memory layer that acts as a Retrieval-Augmented Generation (RAG) system. It stores prior ER inflow states, staffing decisions, and similar historical events. When a new ER scenario is processed, the system retrieves and compares the current state against previous operational patterns to provide additional context-aware grounding for the staffing recommendation.
 
-The memory layer is used for prototype decision support only. It does not store real patient records or protected health information. In the current capstone version, memory is stored in local JSON files and demonstrates how agentic systems can retrieve prior operational context before generating a recommendation.
+The RAG memory layer is used for prototype decision support only. It does not store real patient records or protected health information. In the current capstone version, memory is stored in local JSON files and demonstrates how agentic systems can retrieve prior operational context (RAG) before generating a recommendation.
 
 In production, this memory state should be moved to a managed database with retention rules, access controls, audit logging, and clear separation between short-term session memory and long-term operational history.
 
@@ -443,8 +443,6 @@ SafeStaff_AI/
 
 ## Local installation
 
-### Using standard venv & pip
-
 ```bash
 git clone <your-repo-url>
 cd SafeStaff_AI
@@ -469,19 +467,6 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
-```
-
-### Using Rye
-
-Alternatively, you can initialize and manage the environment using [Rye](https://rye.astral.sh/):
-
-```bash
-git clone <your-repo-url>
-cd SafeStaff_AI
-rye init
-rye pin 3.11
-rye add -r requirements.txt
-rye sync
 ```
 
 ---
@@ -638,7 +623,7 @@ SafeStaff AI is agentic because it performs a multi-step decision workflow inste
 4. Converts pressure into staffing adjustment.
 5. Runs agent-style planning, compliance, safety, finance, and arbiter logic.
 6. Routes high-risk decisions to human approval.
-7. Retrieves similar prior ER operational states from memory to support context-aware recommendations.
+7. Retrieves similar prior ER operational states from memory (Retrieval-Augmented Generation / RAG) to support context-aware recommendations.
 8. Saves schedule, nurse-hour, and audit updates.
 9. Provides explainability and token/cost transparency.
 
@@ -691,9 +676,9 @@ Production database improvements would include:
 
 This would make the system scalable, reliable, and safer across multiple users, departments, and hospital sites.
 
-### 2. Store Memory State in a Database
+### 2. Store RAG/Memory State in a Database
 
-The current memory layer is useful for demonstrating agentic behavior, but production memory should not depend on local runtime files. Memory should be stored in a database with clear retention rules.
+The current RAG and memory layer is useful for demonstrating agentic behavior, but production memory should not depend on local runtime files. Memory should be stored in a database with clear retention rules.
 
 Future memory improvements:
 
