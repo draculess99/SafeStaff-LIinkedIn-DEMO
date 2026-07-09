@@ -3051,13 +3051,18 @@ if workflow_page == "📋 Roster & Shortage Solver":
         
         ga_opt_text = "👍 Approve Optimized Roster"
         reject_text = "👎 Reject Recommendation"
+        escalate_text = "⚠️ Escalate to CNO / Staffing Manager"
         
         committee_rec_nurses = log_data.get("committee_evidence", {}).get("research_adjusted_nurses_needed", 0)
         adj_risk = log_data.get("committee_evidence", {}).get("adjusted_operational_risk", "Low")
+        unmet_gap = log_data.get("unmet_nurse_gap", 0)
         
         # If they requested escalation early, default to Escalate or Reject
         if st.session_state.candidate_override_action == "Request More Candidates / Escalate":
             default_index = 3 # Escalate
+        elif unmet_gap > 0:
+            escalate_text += " (⭐ System Recommended)"
+            default_index = 3
         elif committee_rec_nurses > 0 or adj_risk in ["High", "Critical"]:
             ga_opt_text += " (⭐ System Recommended)"
             default_index = 0
@@ -3074,7 +3079,7 @@ if workflow_page == "📋 Roster & Shortage Solver":
                 ga_opt_text,
                 "👍 Approve Standard Roster",
                 reject_text,
-                "⚠️ Escalate to CNO / Staffing Manager",
+                escalate_text,
                 "✏️ Final Override: Select Alternative Approved Nurse"
             ],
             index=default_index,
